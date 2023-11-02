@@ -21,17 +21,19 @@ How to play:
 
 
 def print_board(board):
-    for row in board:
-        row = [' ' if x is None else x for x in row]
-        print(row)
+    print("     0   1   2")
+    print("   -------------")
+    for i, row in enumerate(board):
+        print(f"{i} | {' | '.join(row)} |")
+        print("   -------------")
 
 
 if __name__ == "__main__":
     board = get_new_board()
     current_player = 'O'
-    winner = None
+    winner = ' '
     print(logo)
-    while winner is None:
+    while winner is ' ':
         print_board(board)
         player_input = input(f"player {current_player} > ")
         try:
@@ -40,7 +42,11 @@ if __name__ == "__main__":
             print("Please enter valid play move\n")
             continue
 
-        if board[row][col]:
+        if row >= len(board[0]) or col >= len(board):
+            print("You placed a mark out of bounds! Try again...\n")
+            continue
+
+        if not board[row][col] == ' ':
             print(
                 f"{board[row][col]} already marked {row},{col}, please select another place\n")
             continue

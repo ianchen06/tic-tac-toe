@@ -1,8 +1,8 @@
 def get_new_board():
     return [
-        [None, None, None],
-        [None, None, None],
-        [None, None, None],
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' '],
     ]
 
 def check_winner(board):
